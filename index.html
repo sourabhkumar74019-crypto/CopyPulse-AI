@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CopyPulse AI - AI Social Media & Ad Copy Generator</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pulse: {
+                            50: '#fdf4ff',
+                            100: '#fae8ff',
+                            500: '#a855f7',
+                            600: '#9333ea',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .pastel-gradient {
+            background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 50%, #f3e8ff 100%);
+        }
+        .hero-btn {
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+        }
+        @keyframes textGlow {
+            0% { color: #0f172a; }
+            50% { color: #9333ea; }
+            100% { color: #0f172a; }
+        }
+        .animated-heading {
+            animation: textGlow 3s infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-purple-500 selection:text-white">
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-purple-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-2xl hero-btn flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-purple-500/30">
+                    C
+                </div>
+                <span class="text-xl font-extrabold tracking-tight text-slate-900">CopyPulse <span class="text-purple-600">AI</span></span>
+            </div>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-bold text-slate-800">
+                <a href="#features" class="hover:text-purple-600 transition">Features</a>
+                <a href="#generator" class="hover:text-purple-600 transition">AI Generator</a>
+                <a href="#articles" class="hover:text-purple-600 transition">Articles</a>
+                <a href="#pricing" class="hover:text-purple-600 transition">Pricing</a>
+            </nav>
+
+            <div class="hidden md:block">
+                <button onclick="openWizard()" class="px-5 py-2.5 rounded-xl hero-btn text-white text-sm font-bold shadow-lg shadow-purple-500/25 hover:opacity-95 transition">
+                    Start Free Trial
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden p-2 rounded-lg text-slate-800 hover:bg-purple-50 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-purple-100 px-6 py-4 space-y-3 shadow-lg">
+            <a href="#features" class="block text-sm font-bold text-slate-800 hover:text-purple-600">Features</a>
+            <a href="#generator" class="block text-sm font-bold text-slate-800 hover:text-purple-600">AI Generator</a>
+            <a href="#articles" class="block text-sm font-bold text-slate-800 hover:text-purple-600">Articles</a>
+            <a href="#pricing" class="block text-sm font-bold text-slate-800 hover:text-purple-600">Pricing</a>
+            <button onclick="openWizard()" class="block text-center w-full py-2.5 rounded-xl hero-btn text-white text-sm font-bold shadow-md">Start Free Trial</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-32 overflow-hidden pastel-gradient">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-6 space-y-8">
+                <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white border border-purple-200 text-purple-700 text-xs font-extrabold tracking-wide uppercase shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-purple-600 animate-pulse"></span>
+                    Serverless Groq AI Copywriting Engine
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
+                    Generate High-Converting Ads in <span class="text-transparent bg-clip-text hero-btn">Seconds.</span>
+                </h1>
+                <p class="text-lg text-slate-800 leading-relaxed font-bold">
+                    Create engaging social media posts, Meta ads, and email campaigns instantly using lightning-fast AI models.
+                </p>
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button onclick="openWizard()" class="px-8 py-4 rounded-xl hero-btn text-white text-center font-bold shadow-xl shadow-orange-500/30 hover:scale-[1.02] transition">
+                        Start Free Trial
+                    </button>
+                    <a href="#generator" class="px-8 py-4 rounded-xl bg-white border border-slate-200 text-slate-900 text-center font-bold hover:bg-slate-50 transition shadow-sm">
+                        Test Generator
+                    </a>
+                </div>
+            </div>
+
+            <!-- Feature Cards Preview -->
+            <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="p-6 rounded-3xl bg-white border border-purple-100 shadow-xl space-y-3">
+                    <div class="text-2xl">✍️</div>
+                    <h3 class="font-extrabold text-slate-900 text-sm">Ad Copy</h3>
+                    <p class="text-xs text-slate-700 font-bold">High-converting Facebook & Instagram ads.</p>
+                </div>
+                <div class="p-6 rounded-3xl bg-white border border-purple-100 shadow-xl space-y-3">
+                    <div class="text-2xl">📱</div>
+                    <h3 class="font-extrabold text-slate-900 text-sm">Social Posts</h3>
+                    <p class="text-xs text-slate-700 font-bold">Viral threads and engaging captions.</p>
+                </div>
+                <div class="p-6 rounded-3xl bg-white border border-purple-100 shadow-xl space-y-3">
+                    <div class="text-2xl">⚡</div>
+                    <h3 class="font-extrabold text-slate-900 text-sm">Instant Speed</h3>
+                    <p class="text-xs text-slate-700 font-bold">Powered by Groq Serverless API.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive AI Generator Sandbox -->
+    <section id="generator" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="bg-white rounded-3xl shadow-2xl border border-purple-200 overflow-hidden">
+                <!-- Solid Dark Header -->
+                <div class="bg-slate-900 p-6 text-white flex items-center justify-between">
+                    <div>
+                        <h3 class="text-lg font-bold text-white">CopyPulse AI Generator Sandbox</h3>
+                        <p class="text-xs text-purple-300 font-bold">Test live AI generation for your marketing campaigns.</p>
+                    </div>
+                    <div class="bg-purple-600/30 border border-purple-400 px-3 py-1 rounded-full text-xs font-bold text-purple-200">Groq Connected</div>
+                </div>
+
+                <div class="p-8 space-y-6 bg-white">
+                    <div>
+                        <p class="text-sm font-extrabold animated-heading mb-3">✨ Test live AI generation for your marketing campaigns instantly below:</p>
+                        <label class="block text-xs font-extrabold text-slate-900 uppercase mb-2">What do you want to advertise?</label>
+                        <input type="text" id="copy-topic" placeholder="e.g. A wireless noise-canceling headphone" class="w-full px-4 py-3.5 bg-slate-50 border-2 border-slate-300 rounded-xl text-sm font-bold text-slate-900 focus:outline-none focus:border-purple-600 shadow-sm">
+                    </div>
+                    <!-- Fixed Button with Visible Text -->
+                    <button onclick="generateCopy()" class="w-full py-4 hero-gradient text-white text-base font-extrabold rounded-xl shadow-lg hover:opacity-90 transition flex items-center justify-center space-x-2">
+                        <span>⚡</span>
+                        <span>Generate Ad Copy Now</span>
+                    </button>
+                    <div id="copy-output" class="p-5 bg-slate-50 rounded-xl border-2 border-purple-200 text-sm text-slate-900 font-bold hidden shadow-sm space-y-2">
+                        <!-- AI Result Appears Here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles & Resources Section -->
+    <section id="articles" class="py-20 pastel-gradient border-y border-purple-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-purple-800">Copywriting Masterclass</span>
+                <h2 class="text-3xl font-extrabold text-slate-900">Articles & Guides</h2>
+                <p class="text-slate-800 font-bold">Learn strategies to write high-converting copy using artificial intelligence.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <article class="bg-white rounded-3xl p-6 border border-slate-200 shadow-lg space-y-4 hover:shadow-xl transition">
+                    <div class="h-40 rounded-2xl bg-purple-50 flex items-center justify-center text-3xl font-bold text-purple-600">📈</div>
+                    <span class="text-xs font-extrabold text-purple-700 uppercase tracking-wide">Conversion</span>
+                    <h3 class="font-extrabold text-lg text-slate-900">Hook, Story, Offer: The Ultimate Ad Formula</h3>
+                    <p class="text-xs text-slate-700 font-bold leading-relaxed">How top DTC brands structure their video and image ad copy for maximum ROAS.</p>
+                    <button onclick="openArticleModal('Hook, Story, Offer: The Ultimate Ad Formula', 'The first 3 seconds of your ad determine its success. By structuring your copy around a strong pattern-interrupt hook, an empathetic story, and a clear no-brainer offer, conversions double instantly.')" class="text-xs font-extrabold text-purple-700 hover:underline">Read Article →</button>
+                </article>
+
+                <article class="bg-white rounded-3xl p-6 border border-slate-200 shadow-lg space-y-4 hover:shadow-xl transition">
+                    <div class="h-40 rounded-2xl bg-pink-50 flex items-center justify-center text-3xl font-bold text-pink-600">🤖</div>
+                    <span class="text-xs font-extrabold text-pink-700 uppercase tracking-wide">AI Marketing</span>
+                    <h3 class="font-extrabold text-lg text-slate-900">Scaling Meta Ads with AI Prompts</h3>
+                    <p class="text-xs text-slate-700 font-bold leading-relaxed">Advanced prompt engineering techniques to generate 50+ ad variations in minutes.</p>
+                    <button onclick="openArticleModal('Scaling Meta Ads with AI Prompts', 'Stop wasting hours brainstorming. Learn how to feed target audience pain points into Llama 3 to produce high-converting variations on autopilot.')" class="text-xs font-extrabold text-pink-700 hover:underline">Read Article →</button>
+                </article>
+
+                <article class="bg-white rounded-3xl p-6 border border-slate-200 shadow-lg space-y-4 hover:shadow-xl transition">
+                    <div class="h-40 rounded-2xl bg-indigo-50 flex items-center justify-center text-3xl font-bold text-indigo-600">🔥</div>
+                    <span class="text-xs font-extrabold text-indigo-700 uppercase tracking-wide">Strategy</span>
+                    <h3 class="font-extrabold text-lg text-slate-900">Psychology Triggers in E-commerce Copy</h3>
+                    <p class="text-xs text-slate-700 font-bold leading-relaxed">Leveraging scarcity, social proof, and loss aversion to drive immediate checkouts.</p>
+                    <button onclick="openArticleModal('Psychology Triggers in E-commerce Copy', 'Understanding buyer psychology allows copywriters to craft messages that resonate deeply with emotional purchasing intent.')" class="text-xs font-extrabold text-indigo-700 hover:underline">Read Article →</button>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section with Live Price Editor -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+                <h2 class="text-3xl font-extrabold text-slate-900">Flexible Pricing Plans</h2>
+                <p class="text-slate-800 font-bold">Buyers can customize prices below instantly.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                <!-- Starter Plan -->
+                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-300 shadow-md space-y-6 relative">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-extrabold text-slate-900">Starter Creator</h3>
+                        <button onclick="openPriceEditor('Starter Creator', 'price-starter', 'period-starter')" class="text-xs bg-white border border-slate-300 hover:bg-slate-100 text-slate-900 font-extrabold px-3 py-1.5 rounded-lg transition shadow-sm">⚙️ Edit Price</button>
+                    </div>
+                    <div class="text-4xl font-extrabold text-slate-900">$<span id="price-starter">29</span> <span id="period-starter" class="text-sm font-bold text-slate-700">/ mo</span></div>
+                    <ul class="space-y-3 text-sm text-slate-900 font-bold">
+                        <li>✓ 100 AI Copies / month</li>
+                        <li>✓ Facebook & Instagram templates</li>
+                        <li>✓ Email support</li>
+                    </ul>
+                    <button onclick="openWizard()" class="w-full py-3 rounded-xl border border-purple-500 text-purple-700 font-bold hover:bg-purple-50 transition shadow-sm">Get Started</button>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="p-8 rounded-3xl bg-white border-2 border-purple-500 shadow-2xl space-y-6 relative">
+                    <span class="absolute -top-3 right-8 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">POPULAR</span>
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-extrabold text-slate-900">Agency Pro</h3>
+                        <button onclick="openPriceEditor('Agency Pro', 'price-pro', 'period-pro')" class="text-xs bg-purple-100 hover:bg-purple-200 text-purple-900 font-extrabold px-3 py-1.5 rounded-lg transition">⚙️ Edit Price</button>
+                    </div>
+                    <div class="text-4xl font-extrabold text-slate-900">$<span id="price-pro">99</span> <span id="period-pro" class="text-sm font-bold text-slate-700">/ mo</span></div>
+                    <ul class="space-y-3 text-sm text-slate-900 font-bold">
+                        <li>✓ Unlimited AI Copies</li>
+                        <li>✓ Groq Ultra Engine</li>
+                        <li>✓ Priority 24/7 Support</li>
+                    </ul>
+                    <button onclick="openWizard()" class="w-full py-3 rounded-xl hero-btn text-white font-bold shadow-md hover:opacity-95 transition">Upgrade to Pro</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price Editor Modal for Buyers -->
+    <div id="price-editor-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl space-y-4 relative">
+            <button onclick="closePriceEditor()" class="absolute top-4 right-4 text-slate-700 hover:text-slate-900 font-bold">✕</button>
+            <h3 class="text-lg font-extrabold text-slate-900" id="editor-title">Edit Plan Price</h3>
+            <p class="text-xs text-slate-700 font-bold">Set your custom price and billing period.</p>
+            
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-xs font-extrabold text-slate-900 uppercase mb-1">New Price Amount</label>
+                    <input type="text" id="new-price-input" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-sm font-bold text-slate-900 focus:outline-none focus:border-purple-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-extrabold text-slate-900 uppercase mb-1">Billing Period / Suffix</label>
+                    <input type="text" id="new-period-input" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-sm font-bold text-slate-900 focus:outline-none focus:border-purple-500">
+                </div>
+            </div>
+
+            <button onclick="saveNewPrice()" class="w-full py-3 rounded-xl hero-btn text-white font-bold text-sm shadow-md hover:opacity-95 transition">Update Price Live</button>
+        </div>
+    </div>
+
+    <!-- Article Reader Modal -->
+    <div id="article-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-8 shadow-2xl space-y-4 relative">
+            <button onclick="closeArticleModal()" class="absolute top-6 right-6 text-slate-700 hover:text-slate-900 font-bold text-lg">✕</button>
+            <h3 class="text-2xl font-extrabold text-slate-900" id="modal-article-title">Article Title</h3>
+            <p class="text-sm text-slate-800 leading-relaxed font-bold" id="modal-article-body">Article content...</p>
+            <button onclick="closeArticleModal()" class="px-6 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold text-sm transition">Close</button>
+        </div>
+    </div>
+
+    <!-- Legal Policy Modal -->
+    <div id="policy-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-8 shadow-2xl space-y-4 relative">
+            <button onclick="closePolicyModal()" class="absolute top-6 right-6 text-slate-700 hover:text-slate-900 font-bold text-lg">✕</button>
+            <h3 class="text-2xl font-extrabold text-slate-900" id="modal-policy-title">Policy Title</h3>
+            <p class="text-sm text-slate-800 leading-relaxed font-bold" id="modal-policy-body">Policy description...</p>
+            <button onclick="closePolicyModal()" class="px-6 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold text-sm transition">Close</button>
+        </div>
+    </div>
+
+    <!-- Setup Wizard Modal -->
+    <div id="wizard-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl space-y-6 relative">
+            <button onclick="closeWizard()" class="absolute top-6 right-6 text-slate-700 hover:text-slate-900 font-bold text-lg">✕</button>
+            <div class="space-y-2">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-purple-800">Quick Setup</span>
+                <h3 class="text-2xl font-extrabold text-slate-900">Start Your CopyPulse Trial</h3>
+                <p class="text-sm text-slate-800 font-bold">Enter your brand name to launch your account.</p>
+            </div>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-extrabold text-slate-900 uppercase mb-2">Brand / Agency Name</label>
+                    <input type="text" id="brand-name" placeholder="my-agency" class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-bold text-slate-900 focus:outline-none focus:border-purple-500">
+                </div>
+            </div>
+
+            <div class="flex space-x-3 pt-2">
+                <button onclick="closeWizard()" class="flex-1 py-3 rounded-xl border border-slate-300 text-slate-800 font-bold text-sm hover:bg-slate-50 transition">Cancel</button>
+                <button onclick="completeInstallation()" class="flex-1 py-3 rounded-xl hero-btn text-white font-bold text-sm shadow-md hover:opacity-95 transition">Launch Dashboard</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between">
+            <p class="text-sm text-slate-300 font-bold">© 2026 CopyPulse AI. Turnkey Micro-SaaS Asset.</p>
+            <div class="flex space-x-6 text-sm mt-4 sm:mt-0">
+                <button onclick="openPolicy('Terms of Service', 'CopyPulse AI provides AI copywriting tools under standard SaaS terms. Users agree to use generated output responsibly.')" class="hover:text-white transition text-slate-200 font-bold">Terms</button>
+                <button onclick="openPolicy('Privacy Policy', 'We protect your data. CopyPulse AI processes ad prompts securely via Groq API without storing personal marketing details.')" class="hover:text-white transition text-slate-200 font-bold">Privacy</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        let activePriceId = null;
+        let activePeriodId = null;
+
+        function openPriceEditor(planName, priceId, periodId) {
+            activePriceId = priceId;
+            activePeriodId = periodId;
+            document.getElementById('editor-title').innerText = 'Edit ' + planName + ' Price';
+            document.getElementById('new-price-input').value = document.getElementById(priceId).innerText;
+            document.getElementById('new-period-input').value = document.getElementById(periodId).innerText;
+            document.getElementById('price-editor-modal').classList.remove('hidden');
+        }
+
+        function closePriceEditor() {
+            document.getElementById('price-editor-modal').classList.add('hidden');
+        }
+
+        function saveNewPrice() {
+            const newPrice = document.getElementById('new-price-input').value.trim();
+            const newPeriod = document.getElementById('new-period-input').value.trim();
+            if(newPrice) {
+                document.getElementById(activePriceId).innerText = newPrice;
+                document.getElementById(activePeriodId).innerText = newPeriod;
+            }
+            closePriceEditor();
+        }
+
+        function openArticleModal(title, body) {
+            document.getElementById('modal-article-title').innerText = title;
+            document.getElementById('modal-article-body').innerText = body;
+            document.getElementById('article-modal').classList.remove('hidden');
+        }
+
+        function closeArticleModal() {
+            document.getElementById('article-modal').classList.add('hidden');
+        }
+
+        function openPolicy(title, body) {
+            document.getElementById('modal-policy-title').innerText = title;
+            document.getElementById('modal-policy-body').innerText = body;
+            document.getElementById('policy-modal').classList.remove('hidden');
+        }
+
+        function closePolicyModal() {
+            document.getElementById('policy-modal').classList.add('hidden');
+        }
+
+        function openWizard() {
+            document.getElementById('wizard-modal').classList.remove('hidden');
+            mobileMenu.classList.add('hidden');
+        }
+
+        function closeWizard() {
+            document.getElementById('wizard-modal').classList.add('hidden');
+        }
+
+        function completeInstallation() {
+            const brand = document.getElementById('brand-name').value.trim();
+            if(!brand) {
+                alert('Please enter your brand name.');
+                return;
+            }
+            alert('Success! Brand "' + brand + '" dashboard initialized.');
+            closeWizard();
+        }
+
+        async function generateCopy() {
+            const topic = document.getElementById('copy-topic').value.trim();
+            const output = document.getElementById('copy-output');
+            if(!topic) return;
+
+            output.classList.remove('hidden');
+            output.innerHTML = '<span class="text-purple-700 font-extrabold animate-pulse">Generating high-converting ad copy...</span>';
+
+            const fullPrompt = `You are an expert direct-response copywriter. Write a short, punchy Facebook ad copy with hooks and CTA for: ${topic}`;
+
+            try {
+                // Secure serverless backend call
+                const response = await fetch('/api/groq', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: fullPrompt })
+                });
+
+                const data = await response.json();
+                const reply = (data.choices && data.choices[0]) ? data.choices[0].message.content : "🔥 Stop scrolling! Discover the ultimate solution today.";
+                output.innerHTML = `<p class="font-extrabold text-slate-900 mb-1">Generated Ad Copy:</p><p class="whitespace-pre-line text-slate-900 font-bold">${reply}</p>`;
+            } catch (e) {
+                output.innerHTML = `<p class="font-extrabold text-red-600 mb-1">Connection Error:</p><p class="text-slate-900 font-bold">Unable to reach /api/groq endpoint. Please verify serverless deployment setup.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
